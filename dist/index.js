@@ -35,7 +35,9 @@ const touchManifest = (root) => {
 };
 const esbuildMultipleBuilds = async function (esbuildOptions) {
     const builds = splitEsbuildOptions(esbuildOptions);
-    await Promise.allSettled(builds.map(async (build) => await esbuild.build(build).catch(errorHandler)));
+    for (const build of builds) {
+        await esbuild.build(build).catch(errorHandler);
+    }
 };
 const splitEsbuildOptions = (esbuildOptions) => {
     const entryPoints = extractEntryPoints(esbuildOptions);
