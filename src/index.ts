@@ -57,9 +57,9 @@ const esbuildMultipleBuilds = async function (
 ): Promise<BuildResult<EsbuildOptions> | void> {
   const builds = splitEsbuildOptions(esbuildOptions);
 
-  await Promise.allSettled(
-    builds.map(async (build) => await esbuild.build(build).catch(errorHandler)),
-  );
+  for (const build of builds) {
+    await esbuild.build(build).catch(errorHandler);
+  }
 };
 
 const splitEsbuildOptions = (esbuildOptions: EsbuildOptions): EsbuildOptions[] => {
