@@ -43,7 +43,6 @@ const splitEsbuildOptions = (esbuildOptions) => {
     const result = slices.map((slice) => {
         const sliceName = extractSliceName(slice);
         const sliceOptions = cloneDeep(esbuildOptions);
-        console.log(sliceOptions);
         const entryPoints = extractEntryPoints(sliceOptions);
         const external = extractExternal(sliceOptions);
         sliceOptions.entryPoints = entryPoints.filter((entryPoint) => entryPoint.startsWith(slice));
