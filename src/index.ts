@@ -57,9 +57,9 @@ const esbuildMultipleBuilds = async function (
 ): Promise<BuildResult<EsbuildOptions> | void> {
   const builds = splitEsbuildOptions(esbuildOptions);
 
-  for (const build of builds) {
-    await esbuild.build(build).catch(errorHandler);
-  }
+  await Promise.allSettled(
+    builds.map(async (build) => await esbuild.build(build).catch(errorHandler)),
+  );
 };
 
 const splitEsbuildOptions = (esbuildOptions: EsbuildOptions): EsbuildOptions[] => {
@@ -69,6 +69,7 @@ const splitEsbuildOptions = (esbuildOptions: EsbuildOptions): EsbuildOptions[] =
   const result = slices.map((slice) => {
     const sliceName = extractSliceName(slice);
     const sliceOptions = cloneDeep(esbuildOptions);
+    console.log(sliceOptions);
     const entryPoints = extractEntryPoints(sliceOptions);
     const external = extractExternal(sliceOptions);
 

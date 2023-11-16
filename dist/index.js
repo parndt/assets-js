@@ -35,9 +35,7 @@ const touchManifest = (root) => {
 };
 const esbuildMultipleBuilds = async function (esbuildOptions) {
     const builds = splitEsbuildOptions(esbuildOptions);
-    for (const build of builds) {
-        await esbuild.build(build).catch(errorHandler);
-    }
+    await Promise.allSettled(builds.map(async (build) => await esbuild.build(build).catch(errorHandler)));
 };
 const splitEsbuildOptions = (esbuildOptions) => {
     const entryPoints = extractEntryPoints(esbuildOptions);
@@ -45,6 +43,7 @@ const splitEsbuildOptions = (esbuildOptions) => {
     const result = slices.map((slice) => {
         const sliceName = extractSliceName(slice);
         const sliceOptions = cloneDeep(esbuildOptions);
+        console.log(sliceOptions);
         const entryPoints = extractEntryPoints(sliceOptions);
         const external = extractExternal(sliceOptions);
         sliceOptions.entryPoints = entryPoints.filter((entryPoint) => entryPoint.startsWith(slice));
