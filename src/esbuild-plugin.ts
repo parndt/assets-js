@@ -151,7 +151,7 @@ const hanamiEsbuild = (options: PluginOptions = { ...defaults }): Plugin => {
             const pathTokens = compactArray([
               options.destDir,
               sliceName,
-              path.relative(dirPath, srcPath).replace(file.toString(), destFileName),
+              path.relative(dirPath, srcPath).replace(path.basename(file.toString()), destFileName),
             ]);
             const destPath = path.join(...pathTokens);
 

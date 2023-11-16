@@ -99,7 +99,7 @@ const hanamiEsbuild = (options = { ...defaults }) => {
                         const pathTokens = compactArray([
                             options.destDir,
                             sliceName,
-                            path.relative(dirPath, srcPath).replace(file.toString(), destFileName),
+                            path.relative(dirPath, srcPath).replace(path.basename(file.toString()), destFileName),
                         ]);
                         const destPath = path.join(...pathTokens);
                         if (fs.lstatSync(srcPath).isDirectory()) {

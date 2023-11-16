@@ -123,7 +123,7 @@ describe("hanami-assets", () => {
         sri: ["sha384-WAsFKE/RcOorRHTXmdRD8gxW+IxxfzKHbRgzcCuhFDC5StKi+6T+AawxcUmuv8Z5"],
       },
       "background.jpg": {
-        url: "/assets/background-UU2XY655.jpg",
+        url: "/assets/background-83509E65.jpg",
         sri: ["sha384-M7QyKTUfzyVWNC4FoMYq0ypu7LDifAYWEtXRT5d6M3Prpau9t5wavW1216HhvCJc"],
       },
       "font.otf": {
@@ -155,8 +155,12 @@ describe("hanami-assets", () => {
         sri: ["sha384-7q5x+ZjZrCoWwyV0BTyc8HUPf1xr+n9l77gwxmwywPWSe0PtopZj1T8NTUPFo0FI"],
       },
       "admin/background.jpg": {
-        url: "/assets/admin/background-SB6NFNOQ.jpg",
+        url: "/assets/admin/background-3E117F55.jpg",
         sri: ["sha384-KzOZwTAlOBMvr/np+ZObBUuYlE9fiVV7FN9HJGhwXKTKY3/joV+LAI31fqNvx9C6"],
+      },
+      "admin/nested/image.jpg": {
+        url: "/assets/admin/nested/image-83509E65.jpg",
+        sri: ["sha384-M7QyKTUfzyVWNC4FoMYq0ypu7LDifAYWEtXRT5d6M3Prpau9t5wavW1216HhvCJc"],
       },
     });
 
